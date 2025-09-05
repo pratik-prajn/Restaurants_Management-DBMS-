@@ -1,0 +1,634 @@
+{% extends 'base.html' %}
+{% block title %}restaurant page{% endblock title %}
+{% block link %}
+
+{% endblock link %}
+{%block css%}
+     
+/* Main CSS Here */
+
+@import url(
+"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+:root {
+--background-color1: #282727;
+--background-color2: #222222;
+--background-color3: #302f2f;
+--background-color4: #000000;
+--primary-color: #4b49ac;
+--secondary-color: #0c007d;
+--Border-color: #3f0097;
+--one-use-color: #F28C28;
+--two-use-color:#f6800b;
+}
+body {
+background-color: var(--background-color4);
+max-width: 100%;
+overflow-x: hidden;
+}
+
+.main-container{
+  
+}
+
+.main {
+  min-height: calc(100vh - 70px); /* Allows the content to expand */
+  width: 100%;
+  overflow: auto; /* Enable scrolling only if necessary */
+  padding: 40px 30px 30px 30px;
+}
+
+.main::-webkit-scrollbar-thumb {
+background-image: 
+		linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
+}
+.main::-webkit-scrollbar {
+width: 5px;
+}
+.main::-webkit-scrollbar-track {
+background-color: #9e9e9eb2;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 20px; /* Adds space at the top */
+}
+
+
+
+
+.box {
+height: 140px;
+width: 440px;
+border-radius: 20px;
+box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+padding: 20px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+cursor: pointer;
+transition: transform 0.3s ease-in-out;
+}
+.box:hover {
+transform: scale(1.08);
+}
+
+.box:nth-child(1) {
+background-color: var(--one-use-color);
+}
+.box:nth-child(2) {
+background-color: var(--two-use-color);
+}
+.box:nth-child(3) {
+background-color: var(--one-use-color);
+}
+.box:nth-child(4) {
+background-color: var(--two-use-color);
+}
+
+.box img {
+height: 50px;
+}
+.box .text {
+color: white;
+}
+.box a{
+text-decoration:none;
+}
+.topic {
+font-size: 20px;
+font-weight: 400;
+letter-spacing: 1px;
+}
+
+.topic-heading {
+font-size: 30px;
+letter-spacing: 3px;
+}
+
+.report-container {
+min-height: 300px;
+max-width: 1200px;
+margin: 70px auto 0px auto;
+background-color: #ffffff;
+border-radius: 10px;
+padding: 0px 20px 20px 20px;
+}
+.report-header {
+height: 80px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 20px 20px 10px 20px;
+border-bottom: 2px solid rgba(0, 20, 151, 0.59);
+}
+
+.recent-Articles {
+font-size: 30px;
+font-weight: 600;
+color: #010778;
+}
+
+.view {
+height: 35px;
+width: 90px;
+border-radius: 8px;
+background-color: #010778;
+color: white;
+font-size: 15px;
+border: none;
+cursor: pointer;
+}
+
+.report-body {
+max-width: 1160px;
+overflow-x: auto;
+padding: 20px;
+}
+.report-topic-heading,
+.item1 {
+width: 1120px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.t-op {
+font-size: 20px;
+letter-spacing: 0px;
+font-weight: 600;
+
+}
+.price{
+  padding-right:89px;
+  font-size: 20px;
+letter-spacing: 0px;
+font-weight: 600;
+}
+.details{
+  padding-right:89px;
+  font-size: 20px;
+letter-spacing: 0px;
+font-weight: 600;
+}
+.edit{
+  padding-right:91px;
+  font-size: 20px;
+letter-spacing: 0px;
+font-weight: 600;
+}
+.items {
+width: 1120px;
+margin-top: 15px;
+}
+
+.item1 {
+margin-top: 20px;
+}
+.t-op-nextlvl {
+font-size: 16px;
+letter-spacing: 0px;
+font-weight: 200;
+}
+
+.label-tag {
+width: 100px;
+text-align: center;
+background-color: rgb(0, 177, 0);
+color: white;
+border-radius: 4px;
+}
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 80px; /* Adjust width as needed */
+}
+
+.edit-buttons .label-tag {
+  width: 90px; /* Adjust width as needed */
+  text-align: center;
+  background-color: rgb(0, 177, 0);
+  color: white;
+  border-radius: 4px;
+  padding:5px;
+}
+.edit-buttons .update-btn {
+  background-color: green; /* Green background for Update button */
+}
+
+.edit-buttons .delete-btn {
+  background-color: red; /* Red background for Delete button */
+}
+
+a {
+  cursor: pointer; /* Changes the cursor to a pointer hand */
+}
+.showcase-area {
+    height: 70vh;
+    background: linear-gradient(
+        rgba(240, 240, 240, 0.144),
+        rgba(255, 255, 255, 0.336)
+      ),
+      url("https://i.postimg.cc/sgcCF2Ty/jason-leung-po-I7-Del-Fi-VA-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .showcase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1.6rem;
+  }
+  
+  .tagline {
+    font-family:'Trebuchet MS', sans-serif;
+    font-size:30px;
+    color: #030302;
+    align:center;
+  }
+  .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #ff5b03 0%,
+    #bd4e13 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 150px;
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+  /* Responsive CSS Here */
+@media screen and (max-width: 950px) {
+
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 800px;
+    }
+  }
+   
+  @media screen and (max-width: 850px) {
+
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 700px;
+    }
+
+ 
+    .searchbar {
+      display: none;
+    }
+    .main {
+      padding: 40px 30px 30px 30px;
+    }
+    .searchbar2 {
+      width: 100%;
+      display: flex;
+      margin: 0 0 40px 0;
+      justify-content: center;
+    }
+    .searchbar2 input {
+      width: 250px;
+      height: 42px;
+      border-radius: 50px 0 0 50px;
+      background-color: var(--background-color3);
+      padding: 0 20px;
+      font-size: 15px;
+      border: 2px solid var(--secondary-color);
+    }
+  }
+   
+  @media screen and (max-width: 490px) {
+    .message {
+      display: none;
+    }
+    .logosec {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 20px;
+    }
+    .menuicn {
+      height: 25px;
+    }
+
+    .recent-Articles {
+      font-size: 20px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 550px;
+    }
+  }
+   
+  @media screen and (max-width: 400px) {
+    .recent-Articles {
+      font-size: 17px;
+    }
+    .view {
+      width: 60px;
+      font-size: 10px;
+      height: 27px;
+    }
+    .report-header {
+      height: 60px;
+      padding: 10px 10px 5px 10px;
+    }
+    .searchbtn img {
+      height: 20px;
+    }
+  }
+   
+  @media screen and (max-width: 320px) {
+    .recent-Articles {
+      font-size: 12px;
+    }
+    .view {
+      width: 50px;
+      font-size: 8px;
+      height: 27px;
+    }
+    .report-header {
+      height: 60px;
+      padding: 10px 5px 5px 5px;
+    }
+    .t-op {
+      font-size: 12px;
+    }
+    .t-op-nextlvl {
+      font-size: 10px;
+    }
+    .report-topic-heading,
+    .item1,
+    .items {
+      width: 300px;
+    }
+    .report-body {
+      padding: 10px;
+    }
+    .label-tag {
+      width: 70px;
+    }
+    .searchbtn {
+      width: 40px;
+    }
+    .searchbar2 input {
+      width: 180px;
+    }
+  }
+/* ==========================*/
+/* CSS FOR MENU FORM*/
+
+
+.custom-container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top:30px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-container  h1 {
+  text-align: center;
+  color: #333;
+}
+
+.custom-form-group {
+  margin-bottom: 20px;
+}
+
+.custom-container  label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.custom-container  input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-button ,.custom-container button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color:orange;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #555;
+}
+
+.custom-container h1{
+  font-size:22px;
+}
+
+
+
+{%endblock%}
+
+{% block body %}
+
+<section class="showcase-area" id="showcase">
+    <div class="showcase-container">
+      <h2 class="animate-charcter" id="home">DINE IN</h2>
+      <p class="tagline">Food that tells a story</p>
+    </div>
+</section>
+<section class="main-container">
+    <div class="main">
+        <div class="box-container">
+          <a href="restaurant_update/{{restaurant.id}}">
+            <div class="box box1">
+                <div class="text">
+                    <h2 class="topic-heading">EDIT</h2>
+                    <h2 class="topic">Restaurant Details</h2>
+                </div>
+          </a>
+                <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210183323/10.png"
+                    alt="edit">
+            </div>
+            <a href="manager_dash">
+            <div class="box box2">
+                
+                <div class="text">
+                    <h2 class="topic-heading">Manager</h2>
+                    <h2 class="topic">Dashboard</h2>
+                </div>
+              </a>
+                <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
+                     alt="manager">
+            </div>
+        </div>
+        
+      <div class="custom-container">
+      <h1>Add Menu Item</h1>
+      <form action="/add_item/{{restaurant.id}}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="custom-form-group">
+              <label for="item_name">Item Name:</label>
+              <input type="text" id="item_name" name="item_name" required>
+          </div>
+          <div class="custom-form-group">
+              <label for="item_name">Item Description:</label>
+              <input type="text" id="item_description" name="item_description" required>
+          </div>
+          <div class="custom-form-group">
+              <label for="price">Price(Rs.):</label>
+              <input type="text" id="price" name="price" required>
+          </div>
+          <div class="custom-form-group">
+              <label for="price">Item Image:</label>
+              <input type="file" name="item_image" accept="image/*" required/>
+          </div>
+          <button class="custom-button" type="submit">Add Item</button>
+      </form>
+      </div>
+
+
+        <div class="report-container">
+            <div class="report-header">
+                <h1 class="recent-Articles">MENU</h1>
+                <button class="view">Delete All</button>
+            </div>
+
+            <div class="report-body">
+                <div class="report-topic-heading">
+                    <h2 class="t-op">Food-Item</h2>
+                    <h2 class="price">Price(Rs.)</h2>
+                 
+                    <h2 class="edit">Edit Item</h2>
+                    <h2 class="details"> Details</h2>
+
+                </div>
+
+                <div class="items">
+                   {%if restaurant_menu|length < 1%}
+                   <div style="margin-top:20px;display:flex;justify-content:center;"><b>You have not added any Item<b></div>
+                    {%else %}
+                  {%for menu  in restaurant_menu%}
+                    <div class="item1">
+                        <h3 class="t-op-nextlvl">{{menu.item_name }}</h3>
+                        <h3 class="t-op-nextlvl">{{menu.price}}</h3>
+                        
+                        <div class="edit-buttons">
+                          <button type="button" data-toggle="modal" data-target="#ModalLoginForm"><h3 class="t-op-nextlvl label-tag update-btn">Update</h3></button>
+                        </div>
+                        <a class="t-op-nextlvl details" href="/delete-menu/{{menu.id}}"><h3 class="t-op-nextlvl label-tag delete-btn">Delete</h3></a>
+                        
+                        
+                    </div>
+                  <!-- Modal HTML Markup -->
+ <div id="ModalLoginForm" class="modal fade">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+              <form role="form" method="POST" action="menu_update/{{menu.id}}"enctype="multipart/form-data" >
+                {% csrf_token %}
+                  <input type="hidden" name="_token" value="">
+                  <div class="form-group">
+                      <label class="control-label">Item Name</label>
+                      <div>
+                          <input type="text" class="form-control input-lg" name="item_name" value="{{menu.item_name }}">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Item Description</label>
+                      <div>
+                          <input type="text" class="form-control input-lg" name="item_description" value="{{menu.item_description }}">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Price(in Rs.)</label>
+                      <div>
+                          <input type="number" class="form-control input-lg" name="item_price" value="{{menu.price }}">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Item Image</label>
+                      <div>
+                        <input type="file" class="form-control input-lg" name="item_image" accept="image/*"/>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div>
+                          <button type="submit" class="btn btn-dark "style="background:black;">Update</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+                  {% endfor%}
+                  {%endif%}
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+ {% endblock %}
+ {% block js %}
+  <script>
+
+    let menuicn = document.querySelector(".menuicn");
+    let nav = document.querySelector(".navcontainer");
+     
+    menuicn.addEventListener("click", () => {
+        nav.classList.toggle("navclose");
+    })
+
+
+    
+  </script>
+  
+
+  {% endblock js %} 

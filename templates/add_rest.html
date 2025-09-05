@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block title %}Add your Restaurant{% endblock title %}
+{% block link %}
+
+{% endblock link %}
+{%block css%}
+     
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+#home{
+    font-size: 54px;
+    color:white;
+}
+.ya{
+    color:#ddd;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.f{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+gap: 30px;
+}
+.u{
+    gap: 10px;
+}
+.showcase-area .btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    font-weight:500;
+    outline: none;
+    margin-top: 1rem;
+    
+    border-radius: 20px;
+}
+
+.showcase-area .btn-primary{
+    background-color: #119764;
+    color:#fff;
+}
+
+.showcase-area .btn-primary:hover{
+    background-color: #119764;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+/* showcase style */
+.column {
+    float: left;
+    width: 33%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row { margin: 0 -5px; }
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.showcase-area {
+    height: 100vh;
+    background-image: url(https://th.bing.com/th/id/OIP.RI_E3h2IFCDWzc27llL7EgHaDY?pid=ImgDet&w=1920&h=878&rs=1);
+    backdrop-filter: blur(1000px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align:center;
+}
+
+.back {
+    background-color: rgba(62, 57, 57, 0.3);
+    backdrop-filter: blur(5px);
+    height: 100vh;
+}
+
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1.6rem;
+}
+
+.main-title {
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    color: #ddd;
+}
+
+/* Media Queries for Tablet and Mobile */
+@media screen and (max-width: 768px) {
+    .showcase-container {
+        font-size: 1.2rem; /* Adjust font size for better mobile and tablet readability */
+    }
+}
+
+
+
+
+
+{%endblock%}
+
+{% block body %}
+
+  <!-- home section -->
+  <section id="showcase" class="showcase-area">
+    <div class="back">
+      <div class="showcase-container">
+        <h1 class="main-title" id="home">Partner With Our Eatswift</h1>
+        <p class="ya">Enjoy Your Exciting & Sizzling Journey With Us!</p>
+        <div class="f">
+            {% if user.is_authenticated %}
+               {%if your_restaurant|length < 1%}
+              <div class="u"><a href="/regist_your_resta" style="color:white"class="btn btn-primary">Register Your Restaurant</a></div>
+              {% else %}
+               <div class="u"><a href="/restaurant_MPO" style="color:white" class="btn btn-primary">View Your Existing Restaurant</a></div>
+              {%endif%}
+            {% else%}
+            <div class="u"><a href="/regist_your_resta" style="color:white"class="btn btn-primary">Register Your Restaurant</a></div>
+            <div class="u"><a href="/authpage" style="color:white" class="btn btn-primary">View Your Existing Restaurant</a></div>
+            {%endif%}
+        </div>
+      </div>
+
+  </section>
+  <!-- home section ends -->
+  
+ {% endblock %}
+ {% block js %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  
+  <script>
+
+ </script>
+ 
+
+  {% endblock js %} 
