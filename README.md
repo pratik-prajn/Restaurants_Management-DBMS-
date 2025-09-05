@@ -40,13 +40,6 @@
 ![Restaurant Menu](screenshots/menu.png)  
 ![Admin Panel](screenshots/admin.png)  
 
----
 
-## Installation  
 
-Follow these steps to set up **EatSwift** locally:  
 
-1. **Clone the Repository:**  
-```bash
-git clone https://github.com/chiranjivikeshav/DBMS_Restaurants_management.git
-cd DBMS_Restaurants_management
